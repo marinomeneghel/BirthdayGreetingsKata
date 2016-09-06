@@ -6,6 +6,8 @@ public class BirthdayServiceTest {
 
     @Test
     public void testWhenSendGreetingIsCalledEmployeesRepositoryCallsGetEmployees() throws Exception {
-//        BirthdayService birthdayService = new BirthdayService();
+        Repository<Employee> employeeRepository = null;
+        GreetingService emailService = null;
+        BirthdayService birthdayService = new BirthdayService(employeeRepository, emailService);
     }
 }
