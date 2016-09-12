@@ -1,5 +1,6 @@
 package com.xpeppers;
 
+import java.util.Date;
 import java.util.List;
 
 public class BirthdayService {
@@ -12,7 +13,8 @@ public class BirthdayService {
         this.greetingService = greetingService;
     }
 
-    public void sendGreetings() {
+    public void sendGreetings(Date today) {
         List<Employee> employees = employeesRepository.load();
+        greetingService.sendGreetings(today);
     }
 }
