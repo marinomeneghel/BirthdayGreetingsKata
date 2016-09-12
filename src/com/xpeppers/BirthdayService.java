@@ -1,12 +1,18 @@
 package com.xpeppers;
 
+import java.util.List;
+
 public class BirthdayService {
 
-    public BirthdayService(Repository<Employee> employeeRepository, GreetingService greetingService) {
+    private final Repository<List<Employee>> employeesRepository;
+    private final GreetingService greetingService;
 
+    public BirthdayService(Repository<List<Employee>> employeesRepository, GreetingService greetingService) {
+        this.employeesRepository = employeesRepository;
+        this.greetingService = greetingService;
     }
 
     public void sendGreetings() {
-
+        List<Employee> employees = employeesRepository.load();
     }
 }
