@@ -1,4 +1,4 @@
-package com.xpeppers;
+package com.xpeppers.repositories;
 
 public interface Repository<T> {
     void store(T t);

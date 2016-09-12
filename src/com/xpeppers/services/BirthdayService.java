@@ -1,4 +1,7 @@
-package com.xpeppers;
+package com.xpeppers.services;
+
+import com.xpeppers.Employee;
+import com.xpeppers.repositories.Repository;
 
 import java.util.Date;
 import java.util.List;

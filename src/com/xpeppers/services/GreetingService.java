@@ -1,4 +1,4 @@
-package com.xpeppers;
+package com.xpeppers.services;
 
 import java.util.Date;
 

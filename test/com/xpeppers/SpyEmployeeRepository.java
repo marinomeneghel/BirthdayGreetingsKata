@@ -1,8 +1,11 @@
 package com.xpeppers;
 
+import com.xpeppers.repositories.Repository;
+
 import java.util.List;
 
-public class FlatFileEmployeesRepository implements Repository<List<Employee>> {
+class SpyEmployeeRepository implements Repository<List<Employee>> {
+    int loadCalls = 0;
 
     @Override
     public void store(List<Employee> employees) {
@@ -11,11 +14,16 @@ public class FlatFileEmployeesRepository implements Repository<List<Employee>> {
 
     @Override
     public List<Employee> load() {
+        loadCalls++;
         return null;
     }
 
     @Override
     public void delete() {
 
+    }
+
+    boolean isCalled(int times) {
+        return loadCalls == times;
     }
 }
