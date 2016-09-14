@@ -6,18 +6,19 @@ import org.junit.Test;
 
 import java.util.Date;
 
+import static com.xpeppers.FakeEmailServiceSpy.*;
 import static org.junit.Assert.*;
 
 public class BirthdayServiceTest {
 
     private BirthdayService birthdayService;
-    private SpyEmailService emailService;
+    private FakeEmailServiceSpy emailService;
     private SpyEmployeeRepository employeesRepository;
 
     @Before
     public void setUp() throws Exception {
         employeesRepository = new SpyEmployeeRepository();
-        emailService = new SpyEmailService();
+        emailService = new FakeEmailServiceSpy(SHOULD_SUCCEED);
         birthdayService = new BirthdayService(employeesRepository, emailService);
     }
 
@@ -34,5 +35,12 @@ public class BirthdayServiceTest {
 
         assertTrue(emailService.isCalled(1));
     }
+
+//    @Test
+//    public void testWhenSendGreetingsSucceedViewCallShowGreetingsSent() throws Exception {
+//        birthdayService.sendGreetings(new Date());
+//
+//        assertTrue(.showGreetingsSent());
+//    }
 
 }
