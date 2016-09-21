@@ -2,16 +2,15 @@ package com.xpeppers;
 
 public class Employee {
 
-    private String name;
+    private String firstName;
+    private String lastName;
+    private String birthday;
+    private String email;
 
-    public static class Builder {
-        private Employee employee;
-
-        public Builder() {}
-
-        public Builder withName(String name) {
-            employee.name = name;
-            return this;
-        }
+    public Employee(String firstName, String lastName, String birthday, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthday = birthday;
+        this.email = email;
     }
 }
