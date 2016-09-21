@@ -1,14 +1,10 @@
 package com.xpeppers.repositories;
 
-import com.oracle.tools.packager.Log;
 import com.xpeppers.Employee;
+import com.xpeppers.EmployeeFactory;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -24,16 +20,20 @@ public class FlatFileEmployeesRepository implements Repository<List<Employee>> {
     public List<Employee> load() {
         List<Employee> employees = new ArrayList<>();
         Scanner scanner = getFileScanner();
+        scanner.useDelimiter("\n");
         // todo handle getFileScanner failure!
         while(scanner.hasNext()) {
-            Employee employee = buildEmployee(scanner.next());
+            String employeeStr = scanner.next();
+            System.out.print(" read line ----> " + employeeStr);
+            Employee employee = buildEmployee(employeeStr);
             employees.add(employee);
         }
         return employees;
     }
 
     private Employee buildEmployee(String employeeString) {
-        return null;
+        EmployeeFactory factory = new EmployeeFactory();
+        return factory.build(employeeString);
     }
 
     private Scanner getFileScanner() {
