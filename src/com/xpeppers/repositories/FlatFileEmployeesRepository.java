@@ -23,9 +23,7 @@ public class FlatFileEmployeesRepository implements Repository<List<Employee>> {
         scanner.useDelimiter("\n");
         // todo handle getFileScanner failure!
         while(scanner.hasNext()) {
-            String employeeStr = scanner.next();
-            System.out.print(" read line ----> " + employeeStr);
-            Employee employee = buildEmployee(employeeStr);
+            Employee employee = buildEmployee(scanner.next());
             employees.add(employee);
         }
         return employees;
