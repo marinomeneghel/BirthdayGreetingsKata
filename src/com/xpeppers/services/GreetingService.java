@@ -1,7 +1,9 @@
 package com.xpeppers.services;
 
-import java.util.Date;
+import com.xpeppers.Employee;
+
+import java.util.List;
 
 public interface GreetingService {
-    void sendGreetings(Date date);
+    void sendGreetings(List<Employee> employees);
 }

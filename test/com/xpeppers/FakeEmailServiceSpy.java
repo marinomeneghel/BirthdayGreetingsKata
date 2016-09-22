@@ -2,7 +2,7 @@ package com.xpeppers;
 
 import com.xpeppers.services.GreetingService;
 
-import java.util.Date;
+import java.util.List;
 
 class FakeEmailServiceSpy implements GreetingService {
 
@@ -17,7 +17,7 @@ class FakeEmailServiceSpy implements GreetingService {
     }
 
     @Override
-    public void sendGreetings(Date date) {
+    public void sendGreetings(List<Employee> employees) {
         sendGreetingsCalls++;
     }
 

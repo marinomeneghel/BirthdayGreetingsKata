@@ -18,6 +18,7 @@ public class BirthdayService {
 
     public void sendGreetings(Date today) {
         List<Employee> employees = employeesRepository.load();
-        greetingService.sendGreetings(today);
+        // todo filter employees depending on birthday
+        greetingService.sendGreetings(employees);
     }
 }
