@@ -2,6 +2,7 @@ package com.xpeppers;
 
 import com.xpeppers.repositories.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class SpyEmployeeRepository implements Repository<List<Employee>> {
@@ -15,7 +16,7 @@ class SpyEmployeeRepository implements Repository<List<Employee>> {
     @Override
     public List<Employee> load() {
         loadCalls++;
-        return null;
+        return new ArrayList<>();
     }
 
     @Override

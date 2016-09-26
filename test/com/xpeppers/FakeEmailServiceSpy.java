@@ -11,6 +11,7 @@ class FakeEmailServiceSpy implements GreetingService {
 
     private int sendGreetingsCalls = 0;
     private boolean success;
+    private List<Employee> greetedEmployees;
 
     public FakeEmailServiceSpy(boolean success) {
         this.success = success;
@@ -18,10 +19,15 @@ class FakeEmailServiceSpy implements GreetingService {
 
     @Override
     public void sendGreetings(List<Employee> employees) {
+        greetedEmployees = employees;
         sendGreetingsCalls++;
     }
 
     public boolean isCalled(int times) {
         return sendGreetingsCalls == times;
+    }
+
+    public boolean isCalledWithParam(List<Employee> employees) {
+        return greetedEmployees.equals(employees);
     }
 }
