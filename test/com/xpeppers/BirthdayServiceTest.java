@@ -53,6 +53,21 @@ public class BirthdayServiceTest {
 
         assertTrue(fakeEmailGreetingService.isCalledWithParam(new ArrayList()));
     }
+//    Chris, Griffin, 1989/05/29, mary.ann@foobar.com
+
+    @Test
+    public void testWhenServiceIsCalledWithDateTwentyNineMayNinetyEightyNineSendGreetingsServiceIsCalledWithOneEmployee() throws Exception {
+        Date date = new SimpleDateFormat("YYYY/MM/dd").parse("1989/05/29");
+        FakeEmailServiceSpy fakeEmailGreetingService = new FakeEmailServiceSpy(true);
+        Repository<List<Employee>> employeesRepository = new FlatFileEmployeesRepository();
+        birthdayService = new BirthdayService(employeesRepository, fakeEmailGreetingService);
+        birthdayService.sendGreetings(date);
+
+        List<Employee> greetedEmployees = new ArrayList<>();
+        Employee employee = new EmployeeFactory().build("\"Chris\", \"Griffin\", \"1989/05/29\", \"mary.app@foobar.com\"");
+        greetedEmployees.add(employee);
+        assertTrue(fakeEmailGreetingService.isCalledWithParam(greetedEmployees));
+    }
 
     //    @Test
 //    public void testWhenSendGreetingsSucceedViewCallShowGreetingsSent() throws Exception {

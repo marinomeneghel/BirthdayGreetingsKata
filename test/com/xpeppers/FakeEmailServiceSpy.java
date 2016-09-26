@@ -28,6 +28,8 @@ class FakeEmailServiceSpy implements GreetingService {
     }
 
     public boolean isCalledWithParam(List<Employee> employees) {
+        System.out.print("Employees -> " + employees.toString() + " greeted Employees -> "
+                + greetedEmployees.toString() + " equals -> " + (greetedEmployees.equals(employees)));
         return greetedEmployees.equals(employees);
     }
 }
