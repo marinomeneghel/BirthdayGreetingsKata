@@ -45,7 +45,7 @@ public class BirthdayServiceTest {
 
     @Test
     public void testWhenServiceIsCalledWithDateOneJanuaryTwoThousandSendGreetingsServiceIsCalledWithEmptyList() throws Exception {
-        Date date = new SimpleDateFormat("YYYY/MM/dd").parse("2000/01/01");
+        Date date = new SimpleDateFormat("yyyy/MM/dd").parse("2000/01/01");
         FakeEmailServiceSpy fakeEmailGreetingService = new FakeEmailServiceSpy(true);
         Repository<List<Employee>> employeesRepository = new FlatFileEmployeesRepository();
         birthdayService = new BirthdayService(employeesRepository, fakeEmailGreetingService);
@@ -56,15 +56,15 @@ public class BirthdayServiceTest {
 //    Chris, Griffin, 1989/05/29, mary.ann@foobar.com
 
     @Test
-    public void testWhenServiceIsCalledWithDateTwentyNineMayNinetyEightyNineSendGreetingsServiceIsCalledWithOneEmployee() throws Exception {
-        Date date = new SimpleDateFormat("YYYY/MM/dd").parse("1989/05/29");
+    public void testWhenServiceIsCalledWithDateTwentyNineMayNinetyeenEightyNineSendGreetingsServiceIsCalledWithOneEmployee() throws Exception {
+        Date date = new SimpleDateFormat("yyyy/MM/dd").parse("1989/05/29");
         FakeEmailServiceSpy fakeEmailGreetingService = new FakeEmailServiceSpy(true);
         Repository<List<Employee>> employeesRepository = new FlatFileEmployeesRepository();
         birthdayService = new BirthdayService(employeesRepository, fakeEmailGreetingService);
         birthdayService.sendGreetings(date);
 
         List<Employee> greetedEmployees = new ArrayList<>();
-        Employee employee = new EmployeeFactory().build("\"Chris\", \"Griffin\", \"1989/05/29\", \"mary.app@foobar.com\"");
+        Employee employee = new EmployeeFactory().build("Chris, Griffin, 1989/05/29, mary.ann@foobar.com");
         greetedEmployees.add(employee);
         assertTrue(fakeEmailGreetingService.isCalledWithParam(greetedEmployees));
     }

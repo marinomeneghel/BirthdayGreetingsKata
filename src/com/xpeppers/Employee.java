@@ -19,4 +19,20 @@ public class Employee {
     public boolean birthdayEquals(Date date) {
         return birthday.equals(date);
     }
+
+    @Override
+    public int hashCode() {
+        return email.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object employee) {
+        if (!(employee instanceof Employee)) {
+            throw new ClassCastException("The given object have to be an instance of Employee");
+        }
+        return ((Employee) employee).email.equals(email) &&
+                ((Employee) employee).firstName.equals(firstName) &&
+                ((Employee) employee).lastName.equals(lastName) &&
+                ((Employee) employee).birthday.equals(birthday);
+    }
 }
