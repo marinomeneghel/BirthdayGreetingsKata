@@ -5,5 +5,5 @@ import com.xpeppers.Employee;
 import java.util.List;
 
 public interface GreetingService {
-    void sendGreetings(List<Employee> employees);
+    void sendGreetings(List<Employee> employees, GreetingCallback callback);
 }

@@ -1,5 +1,6 @@
 package com.xpeppers;
 
+import com.xpeppers.services.GreetingCallback;
 import com.xpeppers.services.GreetingService;
 
 import java.util.List;
@@ -18,9 +19,14 @@ class FakeEmailServiceSpy implements GreetingService {
     }
 
     @Override
-    public void sendGreetings(List<Employee> employees) {
+    public void sendGreetings(List<Employee> employees, GreetingCallback callback) {
         greetedEmployees = employees;
         sendGreetingsCalls++;
+        if(success) {
+            callback.sendGreetingSuccess();
+        } else {
+            callback.sendGreetingFailed();
+        }
     }
 
     public boolean isCalled(int times) {

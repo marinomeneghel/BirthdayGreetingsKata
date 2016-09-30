@@ -7,7 +7,9 @@ import java.util.Date;
 public class Main {
 
     public static void main(String[] args) {
-        BirthdayService service = new BirthdayServiceFactory().build();
+        BirthdayService service = new BirthdayServiceFactory().buildWithView( () -> {
+
+        });
         service.sendGreetings(new Date());
     }
 }

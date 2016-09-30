@@ -10,9 +10,9 @@ import java.util.List;
 
 public class BirthdayServiceFactory {
 
-    public BirthdayService build() {
+    public BirthdayService buildWithView(MainView view) {
         GreetingService greetingsService = new EmailGreetingService();
         Repository<List<Employee>> employeesRepository = new FlatFileEmployeesRepository();
-        return new BirthdayService(employeesRepository, greetingsService);
+        return new BirthdayService(employeesRepository, greetingsService, view);
     }
 }

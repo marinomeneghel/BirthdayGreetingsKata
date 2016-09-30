@@ -6,7 +6,7 @@ import java.util.List;
 
 public class EmailGreetingService implements GreetingService {
     @Override
-    public void sendGreetings(List<Employee> employees) {
+    public void sendGreetings(List<Employee> employees, GreetingCallback callback) {
 
     }
 }
